@@ -20,6 +20,16 @@ public interface StockReadWriter extends StockReader
    */
   boolean buyStock(String pNum, int amount) throws StockException;
 
+/**
+  * Customer removes most recent product,
+  * stock level is thus incremented by amount bought.
+  * @param pNum Product number
+  * @param amount Quantity of product
+  * @return StockNumber, Description, Price, Quantity
+  * @throws middle.StockException if issue
+*/
+  boolean addProduct(String productNum, int amount) throws StockException;
+  
   /**
    * Adds stock (Restocks) to store.
    * @param pNum Product number

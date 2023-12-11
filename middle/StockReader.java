@@ -29,7 +29,7 @@ public interface StockReader
    */
   
   Product getDetails(String pNum) throws StockException;
-  
+
   
   /**
    * Returns an image of the product in the stock list

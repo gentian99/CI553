@@ -90,7 +90,14 @@ public class      R_StockRW
   {
     return aStockRW.buyStock( pNum, amount );
   }
+  
+  public synchronized boolean addProduct( String pNum, int amount )
+	         throws StockException
+	  {
+	    return aStockRW.addProduct( pNum, amount );
+	  }
 
+ 
   /**
    * Adds (Restocks) stock to the product list
    * @param pNum The product number
