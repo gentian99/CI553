@@ -119,7 +119,7 @@ public class StockR implements StockReader
   {
     try
     {
-      Product   dt = new Product( "0", "", 0.00, 0 );
+      Product   dt = new Product("", "0", "", 0.00, 0 );
       ResultSet rs = getStatementObject().executeQuery(
         "select description, price, stockLevel " +
         "  from ProductTable, StockTable " +
@@ -141,6 +141,65 @@ public class StockR implements StockReader
     }
   }
 
+  /**
+   * Returns details about the product in the stock list.
+   *  Assumed to exist in database.
+   * @param pName The product name
+   * @return Details in an instance of a Product
+   */
+ public synchronized Product getDetails2 (String pName) throws StockException {
+	 
+	 try
+	 {
+		 Product dt = new Product ("", "0", "", 0.00, 0);
+		 ResultSet rs = getStatementObject().executeQuery(
+			        "select description, price, stockLevel " +
+			        "  from ProductTable, StockTable " +
+			        "  where  ProductTable.productName = '" + pName + "' "
+			        //"  and    StockTable.productName   = '" + pName + "'"
+			      );
+	 if ( rs.next() )
+     {
+       dt.setProductName( pName );
+       dt.setDescription(rs.getString( "description" ) );
+       dt.setPrice( rs.getDouble( "price" ) );
+       dt.setQuantity( rs.getInt( "stockLevel" ) );
+     }
+     rs.close();
+     return dt;
+   } catch ( SQLException e )
+   {
+     throw new StockException( "SQL getDetails: " + e.getMessage() );
+   }
+	 
+ }
+ /**
+  * Checks if the product exists in the stock list
+  * @param pNum The product number
+  * @return true if exists otherwise false
+  */
+ public synchronized boolean exists2( String pName )
+         throws StockException {
+         
+  {
+    
+    try
+    {
+      ResultSet rs   = getStatementObject().executeQuery(
+        "select price from ProductTable " +
+        "  where  ProductTable.productName = '" + pName + "'"
+      );
+      boolean res = rs.next();
+      DEBUG.trace( "DB StockR: exists(%s) -> %s", 
+                    pName, ( res ? "T" : "F" ) );
+      return res;
+    } catch ( SQLException e )
+    {
+      throw new StockException( "SQL exists: " + e.getMessage() );
+    }
+  }
+}
+  
   /**
    * Returns 'image' of the product
    * @param pNum The product number

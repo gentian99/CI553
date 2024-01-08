@@ -30,6 +30,23 @@ public interface StockReader
   
   Product getDetails(String pNum) throws StockException;
 
+  /**
+   * Returns details about the product in the stock list
+   * @param pName Product name
+   * @return StockNumber, Description, Price, Quantity
+   * @throws StockException if issue
+   */
+  
+  Product getDetails2(String pName) throws StockException;
+  
+  /**
+   * Checks if the product exits in the stock list
+   * @param pName Product name
+   * @return true if exists otherwise false
+   * @throws StockException if issue
+   */
+  
+  boolean exists2(String pName) throws StockException;
   
   /**
    * Returns an image of the product in the stock list

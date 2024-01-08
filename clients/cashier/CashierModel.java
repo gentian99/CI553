@@ -134,7 +134,7 @@ public class CashierModel extends Observable
   /**
    * Removes most recent product from basket
    */
-  public void doRemove() {
+ public void doRemove() {
 	  String theAction;
 	  int amount = 1;
 	  
@@ -156,6 +156,32 @@ public class CashierModel extends Observable
 	  setChanged(); 
 	  notifyObservers(theAction);
   }
+  
+  /**public void doRemove() {
+	    String theAction;
+	    int amount = 1;
+	    
+	    try {
+	        if (!theBasket.isEmpty()) {
+	            Product removedProduct = theBasket.remove(theBasket.size() - 1);
+	            boolean stockReturned = theStock.addProduct(removedProduct.getProductNum(), amount);
+	            if (theBasket.size() >= 1 && stockReturned) {
+	                theAction = "Removed " + removedProduct.getDescription() + " from your basket.";
+	            } else {
+	                theAction = "Basket is empty";
+	            }
+	        } else {
+	            theAction = "Basket is empty";   
+	        }
+	    } catch (StockException e) {
+	        DEBUG.error("CashierModel.doRemove\n%s", e.getMessage());
+	        theAction = e.getMessage();
+	    }
+	    theState = State.process;
+	    setChanged(); 
+	    notifyObservers(theAction);
+	}**/
+
   
   
   /**

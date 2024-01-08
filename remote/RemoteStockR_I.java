@@ -20,6 +20,13 @@ public interface RemoteStockR_I
             throws RemoteException, StockException;
   Product   getDetails(String number)
             throws RemoteException, StockException;
+  
+  boolean   exists2(String name)
+          throws RemoteException, StockException;
+Product   getDetails2(String name)
+          throws RemoteException, StockException;
+
+  
   ImageIcon getImage(String number)
             throws RemoteException, StockException;
 }

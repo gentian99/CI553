@@ -17,6 +17,10 @@ import clients.shopDisplay.DisplayView;
 import clients.warehousePick.PickController;
 import clients.warehousePick.PickModel;
 import clients.warehousePick.PickView;
+import clients.kiosk.KioskController;
+import clients.kiosk.KioskModel;
+import clients.kiosk.KioskView;
+
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
 
@@ -62,6 +66,7 @@ class Main
     if ( many ) 
       startDisplayGUI_MVC( mlf );
     startCollectionGUI_MVC( mlf );
+    startKioskGUI_MVC( mlf );
   }
   
   public void startCustomerGUI_MVC(MiddleFactory mlf )
@@ -169,6 +174,22 @@ class Main
 
     model.addObserver( view );       // Add observer to the model
     window.setVisible(true);         // Make window visible
+  }
+  
+  public void startKioskGUI_MVC(MiddleFactory mlf )
+  {
+	  JFrame  window = new JFrame();
+	    window.setTitle( "Kiosk Client MVC");
+	    window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+	    Dimension pos = PosOnScrn.getPos();
+	    
+	    KioskModel model      = new KioskModel(mlf);
+	    KioskView view        = new KioskView( window, mlf, pos.width, pos.height );
+	    KioskController cont  = new KioskController( model, view );
+	    view.setController( cont );
+
+	    model.addObserver( view );       // Add observer to the model
+	    window.setVisible(true);         // start Screen
   }
 
 }

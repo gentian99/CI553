@@ -56,11 +56,36 @@ public class      R_StockRW
    * @return StockNumber, Description, Price, Quantity
    * @throws middle.StockException if underlying error
    */
+  public synchronized Product getDetails2( String pName )
+         throws StockException
+  {
+    return aStockRW.getDetails( pName );
+  }
+  
+  /**
+   * Returns true if product exists
+   * @param pNum The product number
+   * @return true if product exists else false
+   * @throws middle.StockException if underlying error
+   */
+  public synchronized boolean exists2( String pName )
+         throws StockException
+  {
+    return aStockRW.exists( pName );
+  }
+
+  /**
+   * Returns details about the product in the stock list
+   * @param pNum The product number
+   * @return StockNumber, Description, Price, Quantity
+   * @throws middle.StockException if underlying error
+   */
   public synchronized Product getDetails( String pNum )
          throws StockException
   {
     return aStockRW.getDetails( pNum );
   }
+
 
   /**
    * Returns an image of the product in the stock list

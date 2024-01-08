@@ -24,25 +24,26 @@ class Setup
 
   "drop table ProductTable",
   "create table ProductTable ("+
+      "productName    Varchar(20),"+
       "productNo      Char(4)," +
       "description    Varchar(40)," +
       "picture        Varchar(80)," +
       "price          Float)",
 
   "insert into ProductTable values " +
-     "('0001', '40 inch LED HD TV', 'images/pic0001.jpg', 269.00)",
+     "('Television','0001', '40 inch LED HD TV', 'images/pic0001.jpg', 269.00)",
   "insert into ProductTable values " +
-     "('0002', 'DAB Radio',         'images/pic0002.jpg', 29.99)",
+     "('Radio','0002', 'DAB Radio',         'images/pic0002.jpg', 29.99)",
   "insert into ProductTable values " +
-     "('0003', 'Toaster',           'images/pic0003.jpg', 19.99)",
+     "('Toaster','0003', 'Toaster',           'images/pic0003.jpg', 19.99)",
   "insert into ProductTable values " +
-     "('0004', 'Watch',             'images/pic0004.jpg', 29.99)",
+     "('Watch', '0004', 'Watch',             'images/pic0004.jpg', 29.99)",
   "insert into ProductTable values " +
-     "('0005', 'Digital Camera',    'images/pic0005.jpg', 89.99)",
+     "('Camera', '0005', 'Digital Camera',    'images/pic0005.jpg', 89.99)",
   "insert into ProductTable values " +
-     "('0006', 'MP3 player',        'images/pic0006.jpg', 7.99)",
+     "('MP3', '0006', 'MP3 player',        'images/pic0006.jpg', 7.99)",
   "insert into ProductTable values " +
-     "('0007', '32Gb USB2 drive',   'images/pic0007.jpg', 6.99)",
+     "('USB', '0007', '32Gb USB2 drive',   'images/pic0007.jpg', 6.99)",
 //  "select * from ProductTable",
 
 

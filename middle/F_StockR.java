@@ -88,6 +88,36 @@ public class F_StockR implements StockReader
     }
   }
   
+  public synchronized Product getDetails2( String name )
+	         throws StockException
+	  {
+	    DEBUG.trace("F_StockR:getDetails()" );
+	    try
+	    {
+	      if ( aR_StockR == null ) connect();
+	      return aR_StockR.getDetails( name );
+	    } catch ( RemoteException e )
+	    {
+	      aR_StockR = null;
+	      throw new StockException( "Net: " + e.getMessage() );
+	    }
+	  }
+  
+  public synchronized boolean exists2( String name )
+	         throws StockException
+	  {
+	    DEBUG.trace("F_StockR:exists()" );
+	    try
+	    {
+	      if ( aR_StockR == null ) connect();
+	      return aR_StockR.exists2( name );
+	    } catch ( RemoteException e )
+	    {
+	      aR_StockR = null;
+	      throw new StockException( "Net: " + e.getMessage() );
+	    }
+	  }
+  
   
   public synchronized ImageIcon getImage( String number )
          throws StockException

@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Product implements Serializable
 {
   private static final long serialVersionUID = 20092506;
+  private String theProductName;      //Product name
   private String theProductNum;       // Product number
   private String theDescription;      // Description of product
   private double thePrice;            // Price of product
@@ -25,19 +26,26 @@ public class Product implements Serializable
    * @param aPrice The price of the product
    * @param aQuantity The Quantity of the product involved
    */
-  public Product( String aProductNum, String aDescription,
+  public Product( String aProductName, String aProductNum, String aDescription,
                   double aPrice, int aQuantity )
   {
+	theProductName = aProductName;    // Product name
     theProductNum  = aProductNum;     // Product number
     theDescription = aDescription;    // Description of product
     thePrice       = aPrice;          // Price of product
     theQuantity    = aQuantity;       // Quantity involved
   }
   
+  public String getProductName() { return theProductName; }
   public String getProductNum()  { return theProductNum; }
   public String getDescription() { return theDescription; }
   public double getPrice()       { return thePrice; }
   public int    getQuantity()    { return theQuantity; }
+  
+  public void setProductName( String aProductName )
+  {
+	  theProductName = aProductName;
+  }
   
   public void setProductNum( String aProductNum )
   { 
