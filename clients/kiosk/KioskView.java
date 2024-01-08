@@ -128,6 +128,8 @@ public class KioskView implements Observer
     
     rootWindow.setVisible( true );                  // Make visible);
     theInput.requestFocus();                        // Focus is here
+  
+    cp.setBackground(Color.cyan);                   //sets background color
   }
 
    /**

@@ -49,16 +49,17 @@ class Setup
 
   "drop table StockTable",
   "create table StockTable ("+
+      "productName    Varchar(20),"+
       "productNo      Char(4)," +
       "stockLevel     Integer)",
 
-  "insert into StockTable values ( '0001',  90 )",
-  "insert into StockTable values ( '0002',  20 )",
-  "insert into StockTable values ( '0003',  33 )",
-  "insert into StockTable values ( '0004',  10 )",
-  "insert into StockTable values ( '0005',  17 )",
-  "insert into StockTable values ( '0006',  15 )",
-  "insert into StockTable values ( '0007',  01 )",
+  "insert into StockTable values ('Television', '0001',  90 )",
+  "insert into StockTable values ('Radio', '0002',  20 )",
+  "insert into StockTable values ('Toaster' '0003',  33 )",
+  "insert into StockTable values ('Watch', '0004',  10 )",
+  "insert into StockTable values ('Camera' '0005',  17 )",
+  "insert into StockTable values ('MP3', '0006',  15 )",
+  "insert into StockTable values ('USB', '0007',  01 )",
 
   "select * from StockTable, ProductTable " +
           " where StockTable.productNo = ProductTable.productNo"

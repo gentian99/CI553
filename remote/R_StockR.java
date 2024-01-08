@@ -81,5 +81,12 @@ public class      R_StockR
   {
     return aStockR.getImage( pNum );
   }
+  
+
+ public synchronized ImageIcon getImage2( String pName )
+        throws RemoteException, StockException
+ {
+   return aStockR.getImage2( pName );
+ }
 
 }

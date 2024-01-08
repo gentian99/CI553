@@ -83,7 +83,7 @@ public class KioskModel extends Observable
               pr.getQuantity() );               //    quantity
           pr.setQuantity( amount );             //   Require 1    
           theBasket.add( pr );                  //   Add to basket
-          //thePic = theStock.getImage( pn );     //    product
+          thePic = theStock.getImage2( pn );     //    product
         } else {                                //  F
           theAction =                           //   Inform
             pr.getDescription() +               //    product not
@@ -114,7 +114,7 @@ public class KioskModel extends Observable
 	      if ( theStock.exists2( pn ) )              // Stock Exists?
 	      {                                         // T
 	    	  Product pr = theStock.getDetails2( pn ); //  Product
-	    	  boolean stockBought = theStock.buyStock(pr.getProductNum(), amount);
+	    	  boolean stockBought = theStock.buyStock2(pr.getProductName(), amount);
 	    	  if ( pr.getQuantity() >= amount )       //  In stock?
 	        { 
 	          /**theAction =                           //   Display 
@@ -147,37 +147,15 @@ public class KioskModel extends Observable
   /**
    * Removes most recent product from basket
    */
- public void doRemove() {
-	  String theAction;
-	  int amount = 1;
-	  
-	  try {
-		  //boolean stockReturned = theStock.removeProduct.(theProduct.getProductNum(), theProduct.getQuantity());
-		  Product removedProduct = theBasket2.remove(theBasket2.size() - 1);
-		  boolean stockReturned = theStock.addProduct(removedProduct.getProductNum(), amount);
-		  if(theBasket2.size() >= 1 && stockReturned) {
-			  theAction = "Removed " + removedProduct.getDescription() + " from your basket.";
-			
-		  } else {
-			  theAction = "Basket is empty";
-		  }
-	  } catch (StockException e) {
-		  DEBUG.error("CashierModel.doRemove\n%s", e.getMessage());
-		  theAction = e.getMessage();
-	  }
-	  //theState = State.process;
-	  setChanged(); 
-	  notifyObservers(theAction);
-  }
   
-  /**public void doRemove() {
+  public void doRemove() {
 	    String theAction;
 	    int amount = 1;
 	    
 	    try {
 	        if (!theBasket2.isEmpty()) {
 	            Product removedProduct = theBasket2.remove(theBasket2.size() - 1);
-	            boolean stockReturned = theStock.addProduct(removedProduct.getProductNum(), amount);
+	            boolean stockReturned = theStock.addProduct2(removedProduct.getProductName(), amount);
 	            if (theBasket2.size() >= 1 && stockReturned) {
 	                theAction = "Removed " + removedProduct.getDescription() + " from your basket.";
 	            } else {
@@ -193,7 +171,7 @@ public class KioskModel extends Observable
 	    //theState = State.process;
 	    setChanged(); 
 	    notifyObservers(theAction);
-	}**/
+	}
 
 
 

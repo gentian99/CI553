@@ -71,6 +71,28 @@ public class F_StockRW extends F_StockR
   }
   
   /**
+   * Buys stock and hence decrements number in stock list
+   * @return StockNumber, Description, Price, Quantity
+   * @throws StockException if remote exception
+   */
+
+ 
+  public boolean buyStock2( String pName, int amount )
+         throws StockException
+  {
+    DEBUG.trace("F_StockRW:buyStock()" );
+    try
+    {
+      if ( aR_StockRW == null ) connect();
+      return aR_StockRW.buyStock2( pName, amount );
+    } catch ( RemoteException e )
+    {
+      aR_StockRW = null;
+      throw new StockException( "Net: " + e.getMessage() );
+    }
+  }
+  
+  /**
    * Removes product and hence increments number in stock list
    * @return StockNumber, Description, Price, Quantity
    * @throws StockException if remote exception
@@ -91,6 +113,29 @@ public class F_StockRW extends F_StockR
 	      throw new StockException( "Net: " + e.getMessage() );
 	    }
 	  }
+  
+  /**
+   * Removes product and hence increments number in stock list
+   * @return StockNumber, Description, Price, Quantity
+   * @throws StockException if remote exception
+   */
+
+ 
+  public boolean addProduct2( String pName, int amount )
+	         throws StockException
+	  {
+	    DEBUG.trace("F_StockRW:buyStock()" );
+	    try
+	    {
+	      if ( aR_StockRW == null ) connect();
+	      return aR_StockRW.addProduct2( pName, amount );
+	    } catch ( RemoteException e )
+	    {
+	      aR_StockRW = null;
+	      throw new StockException( "Net: " + e.getMessage() );
+	    }
+	  }
+
 
   /**
    * Adds (Restocks) stock to the product list
@@ -113,6 +158,28 @@ public class F_StockRW extends F_StockR
       throw new StockException( "Net: " + e.getMessage() );
     }
   }
+  
+  /**
+   * Adds (Restocks) stock to the product list
+   * @param number Stock number
+   * @param amount of stock
+   * @throws StockException if remote exception
+   */
+
+  public void addStock2( String pName, int amount )
+         throws StockException
+  {
+    DEBUG.trace("F_StockRW:addStock()" );
+    try
+    {
+      if ( aR_StockRW == null ) connect();
+      aR_StockRW.addStock2( pName, amount );
+    } catch ( RemoteException e )
+    {
+      aR_StockRW = null;
+      throw new StockException( "Net: " + e.getMessage() );
+    }
+  }
 
   /**
    * Modifies Stock details for a given product number.
@@ -129,6 +196,28 @@ public class F_StockRW extends F_StockR
     {
       if ( aR_StockRW == null ) connect();
       aR_StockRW.modifyStock( detail );
+    } catch ( RemoteException e )
+    {
+      aR_StockRW = null;
+      throw new StockException( "Net: " + e.getMessage() );
+    }
+  }
+  
+  /**
+   * Modifies Stock details for a given product name.
+   * Information modified: Description, Price
+   * @param detail Stock details to be modified
+   * @throws StockException if remote exception
+   */
+
+  public void modifyStock2( Product detail )
+              throws StockException
+  {
+    DEBUG.trace("F_StockRW:modifyStock()" );
+    try
+    {
+      if ( aR_StockRW == null ) connect();
+      aR_StockRW.modifyStock2( detail );
     } catch ( RemoteException e )
     {
       aR_StockRW = null;

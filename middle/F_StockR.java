@@ -134,5 +134,21 @@ public class F_StockR implements StockReader
       throw new StockException( "Net: " + e.getMessage() );
     }
   }
+  
+  public synchronized ImageIcon getImage2( String name )
+	         throws StockException
+	  {
+	    DEBUG.trace("F_StockR:getImage()" );
+	    try
+	    {
+	      if ( aR_StockR == null ) connect();
+	      return aR_StockR.getImage( name );
+	    }
+	    catch ( RemoteException e )
+	    {
+	      aR_StockR = null;
+	      throw new StockException( "Net: " + e.getMessage() );
+	    }
+	  }
 
 }

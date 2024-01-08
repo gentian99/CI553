@@ -199,6 +199,38 @@ public class StockR implements StockReader
     }
   }
 }
+ 
+ /**
+  * Returns 'image' of the product
+  * @param pName The product name
+  *  Assumed to exist in database.
+  * @return ImageIcon representing the image
+  */
+ public synchronized ImageIcon getImage2( String pName )
+        throws StockException
+ {
+   String filename = "default.jpg";  
+   try
+   {
+     ResultSet rs   = getStatementObject().executeQuery(
+       "select picture from ProductTable " +
+       "  where  ProductTable.productName = '" + pName + "'"
+     );
+     
+     boolean res = rs.next();
+     if ( res )
+       filename = rs.getString( "picture" );
+     rs.close();
+   } catch ( SQLException e )
+   {
+     DEBUG.error( "getImage()\n%s\n", e.getMessage() );
+     throw new StockException( "SQL getImage: " + e.getMessage() );
+   }
+   
+   //DEBUG.trace( "DB StockR: getImage -> %s", filename );
+   return new ImageIcon( filename );
+ }
+
   
   /**
    * Returns 'image' of the product

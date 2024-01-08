@@ -50,10 +50,21 @@ public interface StockReader
   
   /**
    * Returns an image of the product in the stock list
-   * @param pNum Product nymber
+   * @param pNum Product name
    * @return Image
    * @throws StockException if issue
    */
   
   ImageIcon getImage(String pNum) throws StockException;
+
+/**
+ * Returns an image of the product in the stock list
+ * @param pName Product name
+ * @return Image
+ * @throws StockException if issue
+ */
+
+ImageIcon getImage2(String pName) throws StockException;
 }
+
+
